@@ -15,7 +15,7 @@ $strSql = "SELECT * FROM tb_user WHERE user_name='".$user_name."' AND password='
 			 $_SESSION["name"] = $row['name'];
 			 $_SESSION["shot_name"] = $row['shot_name'];
 			 $_SESSION["user_name"] = $row['user_name'];
-
+			 $_SESSION["chk"]='1';
 			imgLoading("กำลังเข้าสู่ระบบ กรุณารอสักครู่ ...");
     	header("refresh:2; index.php" );
 		exit();
