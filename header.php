@@ -58,20 +58,20 @@ error_reporting(0);
               	  <h5 class="centered"><?php echo $_SESSION["name"] ?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="#">
+                      <a href="#">
                           <i class="fa fa-user"></i>
                           <span>แก้ไขข้อมูลส่วนตัว</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="#" >
+              <a <?php if($_GET['menu']=='dep'){ echo 'class="active"'; } ?> href="show_department.php?menu=dep" >
                           <i class="fa fa-users"></i>
                           <span>จัดการข้อมูลพนักงาน</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="show_position.php" >
+                      <a <?php if($_GET['menu']=='pos'){ echo 'class="active"'; } ?> href="show_position.php?menu=pos" >
                           <i class="fa fa-database"></i>
                           <span>จัดการข้อมูลตำแหน่ง</span>
                       </a>
@@ -134,7 +134,9 @@ error_reporting(0);
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>	
-	
+	<?php
+if($_SESSION["chk"] == '1'){
+  ?>
 	<script type="text/javascript">
         $(document).ready(function () {
         var unique_id = $.gritter.add({
@@ -154,7 +156,10 @@ error_reporting(0);
         return false;
         });
 	</script>
-	
+	<?php 
+session_unset($_SESSION["chk"]);
+  } 
+  ?>
 	<script type="application/javascript">
         $(document).ready(function () {
             $("#date-popover").popover({html: true, trigger: "manual"});
