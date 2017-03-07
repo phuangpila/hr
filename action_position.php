@@ -10,18 +10,18 @@ if($_POST['insert']==1){
 	"po_name"=>$_POST["po_name"],
 );
 insert("tb_position",$data);
-echo "<script type='text/javascript'>window.opener.location.reload('show_position.php');window.close();</script>";
+echo "<script type='text/javascript'>window.opener.location.reload('header.php?menu=pos');window.close();</script>";
 
 }else if($_POST['update']==1){
 	$data = array(
 	"po_name"=>$_POST["po_name"],
 );
 update("tb_position",$data,"po_id = '".$_POST["id"]."' ");
-echo "<script type='text/javascript'>window.opener.location.reload('show_position.php');window.close();</script>";
+echo "<script type='text/javascript'>window.opener.location.reload('header.php?menu=pos');window.close();</script>";
 
 }else if($_GET['del']){
 	delete('tb_position','po_id="'.$_GET['del'].'" ');
-	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='show_position.php';</script>";
+	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='header.php?menu=pos';</script>";
 }
  ?>
 <!DOCTYPE html>
