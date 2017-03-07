@@ -53,7 +53,7 @@ error_reporting(0);
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="#"><img src="assets/img/gg.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="#"><img src="assets/img/biz.jpg" class="img-circle" width="60"></a></p>
 
               	  <h5 class="centered"><?php echo $_SESSION["name"] ?></h5>
               	  	

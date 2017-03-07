@@ -19,7 +19,7 @@ include('include/connect.php');
                 <div class="panel-heading" >ตารางข้อมูลแผนก</div>
                   	<div class="panel-body">
                   		<div>
-							<button class="btn btn-success" onclick="popup('../hr/insert_department.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
+							<button class="btn btn-success" onclick="popup('../hr/action_department.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
 						</div><br>					
 
                   		<table class="table table-striped table-advance table-hover " width="100%">                    
@@ -41,8 +41,8 @@ include('include/connect.php');
 								<td><?php echo $i++; ?></td>
 								<td><?php echo $res_de['dep_name']; ?></td>
 								<td width="20%">
-									<button class="btn btn-warning" onclick="popup('../hr/insert_department.php?up=1&idup=<?php echo $res_de['dep_id']; ?>','mywindow','800','400');">แก้ไข</button>
-									<button class="btn btn-danger" onclick="confirmDelete('insert_department.php?del=<?php echo $res_de['dep_id']; ?>')">ลบ
+									<button class="btn btn-warning" onclick="popup('../hr/action_department.php?up=1&idup=<?php echo $res_de['dep_id']; ?>','mywindow','800','400');">แก้ไข</button>
+									<button class="btn btn-danger" onclick="confirmDelete('action_department.php?del=<?php echo $res_de['dep_id']; ?>')">ลบ
 									</button>
 								</td>
 	                        </tbody>
