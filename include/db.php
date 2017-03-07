@@ -119,6 +119,15 @@ function DateThai($strDate)
     return "$strDay $strMonthThai $strYear,$strHour:$strMinute";
   }
 
+function imgLoading($text){
+  echo "
+    <p align='center' valign='middle'>
+    <br /><br /><br /><br /><br /><br /><br />
+    $text <br /><br />
+    <img src='assets/img/loading.gif'>
+    </p>
+  ";
+ }
  ?>
 <script type="text/javascript">
 	function popup(url, title, w, h) {  
@@ -155,3 +164,4 @@ function confirmDelete(delUrl) {
    width:50px;
 }
 </style>
+

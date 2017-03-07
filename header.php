@@ -1,3 +1,7 @@
+<?php
+session_start();
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +29,6 @@
   </head>
 
   <body>
-
   <section id="container" >
       <!--header start-->
       <header class="header black-bg">
@@ -38,7 +41,7 @@
 
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="login.php">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -50,9 +53,9 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="#"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="#"><img src="assets/img/gg.jpg" class="img-circle" width="60"></a></p>
 
-              	  <h5 class="centered">Anupon Phuangpila</h5>
+              	  <h5 class="centered"><?php echo $_SESSION["name"] ?></h5>
               	  	
                   <li class="mt">
                       <a class="active" href="#">
@@ -137,7 +140,7 @@
         var unique_id = $.gritter.add({
            
             title: 'ยินดีต้อนรับ',
-            text: 'คุณอนุพล พวงพิลา',
+            text: 'คุณ <?php echo $_SESSION["shot_name"] ?>',
           
             image: '',
           
@@ -186,7 +189,6 @@
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
-  
-
   </body>
+
 </html>
