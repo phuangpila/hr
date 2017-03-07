@@ -68,7 +68,7 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="#" >
+                      <a href="show_position.php" >
                           <i class="fa fa-database"></i>
                           <span>จัดการข้อมูลตำแหน่ง</span>
                       </a>
