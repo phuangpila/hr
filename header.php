@@ -46,7 +46,9 @@ error_reporting(0);
             </div>
         </header>
       <!--header end-->
+<style type="text/css">
 
+</style>
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
@@ -92,7 +94,7 @@ error_reporting(0);
                   <li class="sub-menu">
                       <a <?php if($_GET['menu']=='approve'){ echo 'class="active"'; } ?> href="header.php?menu=approve" >
                           <i class="fa fa-book"></i>
-                          <span>อนุมัติการลา <span class="badge bg-theme">4</span></span>
+                          <span>อนุมัติการลา <span class="badge bg-important bg-theme">4</span></span>
                       </a>
                   </li>
                   <li class="sub-menu">

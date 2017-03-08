@@ -2,7 +2,14 @@
 include('include/db.php');
 include('include/connect.php');
 ?>
- <div class="panel panel-primary" >
+<style type="text/css">
+	.panel-default > .panel-heading {
+  color: #FFFFFF;
+  background-color: #424A5D;
+  border-color: #FFFFFF;
+}
+</style>
+ <div class="panel panel-default" >
                 <div class="panel-heading" >ตารางข้อมูลตำแหน่งพนักงาน</div>
                   	<div class="panel-body">
 							<button class="btn btn-success" onclick="popup('../hr/action_position.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
