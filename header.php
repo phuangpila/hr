@@ -60,7 +60,7 @@ error_reporting(0);
                   <li class="mt">
                       <a <?php if($_GET['menu']=='pro'){ echo 'class="active"'; } ?> href="header.php?menu=pro">
                           <i class="fa fa-user"></i>
-                          <span>แก้ไขข้อมูลส่วนตัว</span>
+                          <span>ข้อมูลส่วนตัว</span>
                       </a>
                   </li>
 
