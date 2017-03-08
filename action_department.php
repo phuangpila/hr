@@ -10,18 +10,18 @@ if($_POST['insert']==1){
 	"dep_name"=>$_POST["dep_name"],
 );
 insert("tb_department",$data);
-echo "<script type='text/javascript'>window.opener.location.reload('show_department.php');window.close();</script>";
+echo "<script type='text/javascript'>window.opener.location.reload('header.php?menu=dep');window.close();</script>";
 
 }else if($_POST['update']==1){
 	$data = array(
 	"dep_name"=>$_POST["dep_name"],
 );
 update("tb_department",$data,"dep_id = '".$_POST["id"]."' ");
-echo "<script type='text/javascript'>window.opener.location.reload('show_department.php');window.close();</script>";
+echo "<script type='text/javascript'>window.opener.location.reload('header.php?menu=dep');window.close();</script>";
 
 }else if($_GET['del']){
 	delete('tb_department','dep_id="'.$_GET['del'].'" ');
-	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='show_department.php';</script>";
+	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='header.php?menu=dep';</script>";
 }
  ?>
 <!DOCTYPE html>

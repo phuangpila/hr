@@ -1,23 +1,10 @@
 <?php
-include ("header.php");
 include('include/db.php');
 include('include/connect.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<div class="row-fuild">
-		<div class="col-md-12">
-
-            <div class="panel panel-primary" >
-                <div class="panel-heading" >ตารางข้อมูลแผนก</div>
+<div class="panel panel-primary" >
+ <div class="panel-heading" >ตารางข้อมูลแผนกพนักงาน</div>
                   	<div class="panel-body">
-                  		<div>
 							<button class="btn btn-success" onclick="popup('../hr/action_department.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
 						</div><br>					
 
@@ -48,10 +35,5 @@ include('include/connect.php');
 								</td>
 	                        </tbody>
 	                        <?php } ?>
-                		</table>           
-                  	</div>
-            </div>
-        </div>
-	</div>
-</body>
-</html>
+                		</table>         
+</div>

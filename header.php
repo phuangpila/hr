@@ -58,45 +58,45 @@ error_reporting(0);
               	  <h5 class="centered"><?php echo $_SESSION["name"] ?></h5>
               	  	
                   <li class="mt">
-                      <a href="#">
+                      <a <?php if($_GET['menu']=='pro'){ echo 'class="active"'; } ?> href="header.php?menu=pro">
                           <i class="fa fa-user"></i>
                           <span>แก้ไขข้อมูลส่วนตัว</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-              <a <?php if($_GET['menu']=='dep'){ echo 'class="active"'; } ?> href="show_department.php?menu=dep" >
+              <a <?php if($_GET['menu']=='per'){ echo 'class="active"'; } ?> href="header.php?menu=per" >
                           <i class="fa fa-users"></i>
                           <span>จัดการข้อมูลพนักงาน</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a <?php if($_GET['menu']=='pos'){ echo 'class="active"'; } ?> href="show_position.php?menu=pos" >
+                      <a <?php if($_GET['menu']=='pos'){ echo 'class="active"'; } ?> href="header.php?menu=pos" >
                           <i class="fa fa-database"></i>
                           <span>จัดการข้อมูลตำแหน่ง</span>
                       </a>
                       
                   </li>
                   <li class="sub-menu">
-                      <a href="show_department.php" >
+                      <a <?php if($_GET['menu']=='dep'){ echo 'class="active"'; } ?> href="header.php?menu=dep" >
                           <i class="fa fa-bar-chart-o"></i>
                           <span>จักการข้อมูลแผนก</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="#" >
+                      <a <?php if($_GET['menu']=='type_leave'){ echo 'class="active"'; } ?> href="header.php?menu=type_leave" >
                           <i class="fa fa-edit"></i>
                           <span>ประเภทการลา</span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="#" >
+                      <a <?php if($_GET['menu']=='approve'){ echo 'class="active"'; } ?> href="header.php?menu=approve" >
                           <i class="fa fa-book"></i>
                           <span>อนุมัติการลา <span class="badge bg-theme">4</span></span>
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="#" >
+                      <a <?php if($_GET['menu']=='leave'){ echo 'class="active"'; } ?> href="header.php?menu=leave" >
                           <i class="fa fa-calendar"></i>
                           <span>ขอลา</span>
                       </a>
@@ -108,13 +108,34 @@ error_reporting(0);
       <!--sidebar end-->
    <section id="main-content">
           <section class="wrapper">
-              <div class="row">    
-
-                          </div>
-                      </div>
-
-  </section>
-
+           <div class="row">  
+                  <div class="col-lg-12 main-chart">
+    
+<?php
+if($_GET['menu']=='pos'){
+  include("show_position.php");
+}else if($_GET['menu']=='dep'){
+  include("show_department.php");
+}else if($_GET['menu']=='pro'){
+  include("show_profile.php");
+}else if($_GET['menu']=='per'){
+  include("show_personnel.php");
+}else if($_GET['menu']=='leave'){
+  include("show_leave.php");
+}else if($_GET['menu']=='type_leave'){
+  include("show_type_leave.php");
+}else if($_GET['menu']=='approve'){
+  include("show_approve.php");
+}
+?>
+  </div> 
+</div>    
+<! --/row -->
+          </section>
+      </section>
+<?php
+      include "footer.php";
+?>
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/jquery-1.8.3.min.js"></script>
