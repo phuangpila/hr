@@ -2,6 +2,7 @@
 include('include/db.php');
 include('include/connect.php');
 ?>
+<div class="panel panel-primary" >
  <div class="panel-heading" >ตารางข้อมูลแผนกพนักงาน</div>
                   	<div class="panel-body">
 							<button class="btn btn-success" onclick="popup('../hr/action_department.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
@@ -32,3 +33,4 @@ include('include/connect.php');
 	                        </tbody>
 	                        <?php } ?>
                 		</table>         
+</div>

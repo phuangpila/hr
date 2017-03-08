@@ -110,7 +110,7 @@ error_reporting(0);
           <section class="wrapper">
            <div class="row">  
                   <div class="col-lg-12 main-chart">
-     <div class="panel panel-primary" >
+    
 <?php
 if($_GET['menu']=='pos'){
   include("show_position.php");
@@ -130,7 +130,7 @@ if($_GET['menu']=='pos'){
 ?>
   </div> 
 </div>    
-    </div><! --/row -->
+<! --/row -->
           </section>
       </section>
 <?php
