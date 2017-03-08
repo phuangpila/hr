@@ -27,9 +27,6 @@ include('include/connect.php');
 								<td><?php echo $i++; ?></td>
 								<td><?php echo $res_po['po_name']; ?></td>
 								<td width="20%">
-									<button class="btn btn-warning" onclick="popup('../hr/action_position.php?up=1&idup=<?php echo $res_po['po_id']; ?>','mywindow','800','400');">แก้ไข</button>
-									<button class="btn btn-danger" onclick="confirmDelete('action_position.php?del=<?php echo $res_po['po_id']; ?>')">ลบ
-									</button>
 									<button class="btn btn-warning btn-xs" onclick="popup('../hr/action_position.php?up=1&idup=<?php echo $res_po['po_id']; ?>','mywindow','800','400');"><i class="fa fa-pencil"></i></button>
 									<button class="btn btn-danger btn-xs" onclick="confirmDelete('action_position.php?del=<?php echo $res_po['po_id']; ?>')"><i class="fa fa-trash-o "></i></button>
 								</td>
