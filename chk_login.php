@@ -12,6 +12,7 @@ $strSql = "SELECT * FROM tb_user WHERE user_name='".$user_name."' AND password='
 		if ($rec > 0) {
 			
 			$row = mysql_fetch_array($sqlQuery);
+			 $_SESSION["id"] = $row['id_user'];
 			 $_SESSION["name"] = $row['name'];
 			 $_SESSION["shot_name"] = $row['shot_name'];
 			 $_SESSION["user_name"] = $row['user_name'];

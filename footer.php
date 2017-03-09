@@ -1,3 +1,8 @@
+   <style>
+    .site-footer {
+        background-color: #FFD777;
+    }
+</style>
    <footer class="site-footer">
           <div class="text-center">
               2017 - HR BIZPOTENTAIL
