@@ -13,7 +13,9 @@ session_start();
 </style>
  <div class="panel panel-default" >
                 <div class="panel-heading" >ตารางข้อมูลโครงการ</div>
-<br>				
+                <div class="panel-body">
+							<a class="btn btn-success" data-toggle="modal" href='#modal-id'> เพิ่มข้อมูล</a>
+						</div><br>			
                   		<table class="table-bordered table-striped table-condensed" width="100%">                    
 	                    	<thead>
 	                          <tr>
@@ -26,8 +28,12 @@ session_start();
 	                            <th>โครงการที่รับผิดชอบ</th>
 	                            <th>อายุงาน(ปี)</th>
 	                            <th>เพศ</th>
+	                            <th width="5%">จำนวนวันลา</th>
+	                            <th width="10%">Action</th>
 	                          </tr>
 	                        </thead>
+	                        
+	                        <tbody>
 	                        <?php 
 	                        	$i=1;
 	                        	$query = mysql_query("SELECT * FROM tb_user");
@@ -43,7 +49,7 @@ session_start();
 	                        	
 	                        	
 	                         ?>
-	                        <tbody>
+	                         <tr>
 								<td><?php echo $i++; ?></td>
 								<td><?php echo $res['name']; ?></td>
 								<td><?php echo $res['shot_name']; ?></td>
@@ -53,7 +59,26 @@ session_start();
 								<td><?php echo $res_pro['pro_name']; ?></td>
 								<td><?php echo $res['work_year']; ?></td>
 								<td><?php echo $res['sex']; ?></td>	
+								<td style="text-align:center">
+									<a href="action_personnel.php?detail=1&id_detail=<?php echo $res['id_user']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['id_user']; ?>" class="btn btn-info  btn-xs" ><i class="glyphicon glyphicon-folder-open"></i></a>
+								<div class="modal fade" id="myModal<?php echo $res['id_user']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							 		 <div class="modal-dialog">
+							    		<div class="modal-content"></div>
+							 		 </div>
+								</div>
+								</td>
+								<td>
+									<a href="action_personnel.php?up=1&id_up=<?php echo $res['id_user']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['id_user']; ?>" class="btn btn-warning  btn-xs" ><i class="fa fa-pencil"></i></a>
+								<div class="modal fade" id="myModalD<?php echo $res['id_user']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelD" aria-hidden="true">
+							 		 <div class="modal-dialog">
+							    		<div class="modal-content"></div>
+							 		 </div>
+								</div>
+
+									<button class="btn btn-danger btn-xs" onclick="confirmDelete('action_personnel.php?del=<?php echo $res_de['dep_id']; ?>')"><i class="fa fa-trash-o "></i></button>
+								</td>	
+								</tr>
+								<?php } ?>
 	                        </tbody>
-	                        <?php } ?>
                 		</table>           
 </div>

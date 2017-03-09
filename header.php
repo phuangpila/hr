@@ -173,7 +173,7 @@ if($_SESSION["chk"] == '1'){
         $(document).ready(function () {
         var unique_id = $.gritter.add({
            
-            title: 'ยินดีต้อนรับ <?php echo $_SESSION["chk"] ?>',
+            title: 'ยินดีต้อนรับ ',
             text: 'คุณ <?php echo $_SESSION["shot_name"] ?>',
           
             image: '',
