@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@ error_reporting(0);
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="ย่อเมนู"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>Bizpotentail</b></a>
+            <a href="header.php" class="logo"><b>Bizpotentail</b></a>
             <!--logo end-->
 
             <div class="top-menu">
@@ -85,6 +86,12 @@ error_reporting(0);
                           <span>จักการข้อมูลแผนก</span>
                       </a>
                   </li>
+                   <li class="sub-menu">
+                      <a <?php if($_GET['menu']=='project'){ echo 'class="active"'; } ?> href="header.php?menu=project" >
+                          <i class="fa fa-sitemap"></i>
+                          <span>จัดการโครงการ</span>
+                      </a>
+                  </li>
                   <li class="sub-menu">
                       <a <?php if($_GET['menu']=='type_leave'){ echo 'class="active"'; } ?> href="header.php?menu=type_leave" >
                           <i class="fa fa-edit"></i>
@@ -124,6 +131,8 @@ if($_GET['menu']=='pos'){
   include("show_personnel.php");
 }else if($_GET['menu']=='leave'){
   include("show_leave.php");
+}else if($_GET['menu']=='project'){
+  include("show_project.php");
 }else if($_GET['menu']=='type_leave'){
   include("show_type_leave.php");
 }else if($_GET['menu']=='approve'){
@@ -180,7 +189,8 @@ if($_SESSION["chk"] == '1'){
         });
 	</script>
 	<?php 
-session_unset($_SESSION["chk"]);
+//session($_SESSION["chk"]);
+
   } 
   ?>
 	<script type="application/javascript">

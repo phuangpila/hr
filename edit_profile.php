@@ -1,7 +1,31 @@
 <?php 
 include('include/db.php');
 include('include/connect.php');
-include('include/comtop.php');
+session_start();
+error_reporting(0);
+if($_SESSION["id"]!=""){
+$pass_word=stripslashes(htmlspecialchars(trim($_POST['pass_word']), ENT_QUOTES));
+$re_password=$_POST['re_password'];
+
+
+if($pass_word == $re_password ){
+$login_check = hash('sha1', $pass_word.$_SESSION["user_name"]);
+$newdata = array(
+"password"=>$login_check,
+);
+
+update("tb_user",$newdata,"id_user = '".$_SESSION["id"]."' ");
+echo "<script type='text/javascript'>alert('แก้ไข Password เรียบร้อยแล้ว');</script>";
+		header('refresh : 0.1; header.php?menu=pro');	
+}else{
+	echo "<script type='text/javascript'>alert('Password ไม่ต้องกัน ลองใหม่อีกครั้ง');</script>";
+	header('refresh : 0.1; header.php?menu=pro');		
+}
+
+}else{
+    echo "<script type='text/javascript'>alert('กรุณา Login ก่อน');</script>";
+            echo "<meta http-equiv='refresh' content='0;url=index.php' />";
+}
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -10,23 +34,6 @@ include('include/comtop.php');
  	<title></title>
  </head>
  <body>
- 		<!--  <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a> -->
- 	<div class="modal fade" id="modal-id">
- 		<div class="modal-dialog">
- 			<div class="modal-content">
- 				<div class="modal-header">
- 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
- 					<h4 class="modal-title">Modal title</h4>
- 				</div>
- 				<div class="modal-body">
- 					
- 				</div>
- 				<div class="modal-footer">
- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
- 					<button type="button" class="btn btn-primary">Save changes</button>
- 				</div>
- 			</div>
- 		</div>
- 	</div>
+ 	
  </body>
  </html>

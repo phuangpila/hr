@@ -1,6 +1,8 @@
 <?php 
 include('include/db.php');
 include('include/connect.php');
+session_start();
+
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -14,14 +16,30 @@ include('include/connect.php');
  			<h3 class="panel-title">ข้อมูลส่วนตัว</h3>
  		</div>
  		<div class="panel-body">
+ 			<?php 
+
+ 				$sql_my ="SELECT * FROM tb_user WHERE id_user = '".$_SESSION["id"]."'";
+ 				$query_my = mysql_query($sql_my);
+ 				$res_my = mysql_fetch_array($query_my);
+ 				//echo $sql_my;
+ 				
+ 				$query_po = mysql_query("SELECT * FROM tb_position WHERE po_id = '".$res_my['id_position']."'");
+ 				$res_po = mysql_fetch_array($query_po);
+ 				$query_de = mysql_query("SELECT * FROM tb_department WHERE dep_id = '".$res_my['id_department']."'");
+ 				$res_de = mysql_fetch_array($query_de);
+
+
+	            $query_pro = mysql_query("SELECT pro_name FROM tb_project WHERE pro_id = '".$res_my['id_project']."'");
+	            $res_pro = mysql_fetch_array($query_pro);
+ 			 ?>
  			<table align="center">
  				<thead>
  					<tr>
  						<td>ชื่อ :</td> 
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
  						<td>ชื่อย่อ :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['shot_name']; ?>" class="form-control" disabled=""></td>
  					</tr>
  					<tr>
 						<td>&nbsp;&nbsp;</td>
@@ -29,7 +47,7 @@ include('include/connect.php');
 					</tr>
 					<tr>
 						<td>เพศ :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['sex']; ?>" class="form-control" disabled=""></td>
  						<td></td>
  						<td></td>
 					</tr>
@@ -39,14 +57,10 @@ include('include/connect.php');
 					</tr>
 					<tr>
  						<td>UserName :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['user_name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
- 						<td>PassWord :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
- 						 <td>&nbsp;&nbsp;</td>
  						<td>
-						<button class="btn btn-round btn-warning btn-xs" onclick="popup('../hr/edit_profile.php?up=1&idup=<?php echo $res_de['dep_id']; ?>','mywindow','800','400');"><i class="fa fa-pencil">แก้ไข PassWord</i></button>
- 						
+						<a class="btn btn-warning btn-xs" data-toggle="modal" href='#modal-id'>แก้ไข Password</a>
  					</tr>
  					<tr>
 						<td>&nbsp;&nbsp;</td>
@@ -54,10 +68,10 @@ include('include/connect.php');
 					</tr>
  					<tr>
  						<td>โครงการ :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_pro['pro_name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
  						<td>แผนก :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_de['dep_name']; ?>" class="form-control" disabled=""></td>
  						 <td>&nbsp;&nbsp;</td>
  						
  					</tr>
@@ -67,14 +81,46 @@ include('include/connect.php');
 					</tr>
  					<tr>
  						<td>ตำแหน่ง :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_po['po_name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
  						<td>อายุงาน :</td>
- 						<td><input type="text" name="" id="" value="" class="form-control" disabled=""></td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['sex']; ?>" class="form-control" disabled=""></td>
  					</tr>
  				</thead>
  			</table>
  		</div>
  	</div>
+<!-- Edit PassWord -->
+<form action="edit_profile.php" method="post">
+ 	<div class="modal fade" id="modal-id">
+ 		<div class="modal-dialog">
+ 			<div class="modal-content">
+ 				<div class="modal-header">
+ 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ 					<h4 class="modal-title">แก้ไข Password</h4>
+ 				</div>
+ 				<div class="modal-body">
+ 					<table>
+ 						<tr>
+	 						<td>PassWord ใหม่ :</td> 
+	 						<td>	
+	 							<input type="text" name="pass_word" id="" value="" class="form-control">
+	 						</td>
+	 						<td>&nbsp;&nbsp;</td>
+	 						<td>ยืนยัน Password :</td>
+	 						<td>
+	 							<input type="text" name="re_password" id="" value="" class="form-control">
+	 						</td>
+ 						</tr>
+ 					</table>
+ 				</div>
+ 				<div class="modal-footer">
+ 					<button type="submit" class="btn btn-success">บันทึก</button>
+ 					<button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </form>
  </body>
  </html>

@@ -6,6 +6,7 @@ $user_name=stripslashes(htmlspecialchars(trim($_POST['user_name']), ENT_QUOTES))
 $pass_word=stripslashes(htmlspecialchars(trim($_POST['pass_word']), ENT_QUOTES));
 	if($user_name != "" && $pass_word != ""){
 	$login_check = hash('sha1', $pass_word.$user_name);
+
 $strSql = "SELECT * FROM tb_user WHERE user_name='".$user_name."' AND password='".$login_check."' ";
 	$sqlQuery = mysql_query($strSql);
 	$rec = mysql_num_rows($sqlQuery);

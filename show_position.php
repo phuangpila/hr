@@ -1,6 +1,8 @@
 <?php
 include('include/db.php');
 include('include/connect.php');
+session_start();
+
 ?>
 <style type="text/css">
 	.panel-default > .panel-heading {
@@ -12,9 +14,8 @@ include('include/connect.php');
  <div class="panel panel-default" >
                 <div class="panel-heading" >ตารางข้อมูลตำแหน่งพนักงาน</div>
                   	<div class="panel-body">
-							<button class="btn btn-success" onclick="popup('../hr/action_position.php?in=1','mywindow','800','400');">เพิ่มข้อมูล</button>
-						</div><br>					
-
+							<a class="btn btn-success" data-toggle="modal" href='#modal-id'> เพิ่มข้อมูล</a>
+						</div><br>				
                   		<table class="table table-striped table-advance table-hover " width="100%">                    
 	                    	<thead>
 	                          <tr>
@@ -34,23 +35,49 @@ include('include/connect.php');
 								<td><?php echo $i++; ?></td>
 								<td><?php echo $res_po['po_name']; ?></td>
 								<td width="20%">
+							
+								<a href="action_position.php?up=1&idup=<?php echo $res_po['po_id']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res_po['po_id']; ?>" class="btn btn-warning  btn-xs" ><i class="fa fa-pencil"></i></a>
+								<div class="modal fade" id="myModal<?php echo $res_po['po_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							 		 <div class="modal-dialog">
+							    		<div class="modal-content"></div>
+							 		 </div>
+								</div>
 
-									<button class="btn btn-warning btn-xs" onclick="popup('../hr/action_position.php?up=1&idup=<?php echo $res_po['po_id']; ?>','mywindow','800','400');"><i class="fa fa-pencil"></i></button>
-
-								<!-- POPUP -->
-								<a href="test.php?up=1&idup=<?php echo $res_po['po_id']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res_po['po_id']; ?>" class="btn btn-warning  btn-xs" ><i class="fa fa-pencil"></i></a>
-						<div class="modal fade" id="myModal<?php echo $res_po['po_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      
-						    </div>
-						  </div>
-						</div> 
-						<!-- POPUP -->   
-									<!--<button class="btn btn-warning btn-xs" onclick="popup('../hr/action_position.php?up=1&idup=<?php echo $res_po['po_id']; ?>','mywindow','800','400');"><!--<i class="fa fa-pencil"></i></button>-->
 									<button class="btn btn-danger btn-xs" onclick="confirmDelete('action_position.php?del=<?php echo $res_po['po_id']; ?>')"><i class="fa fa-trash-o "></i></button>
 								</td>
 	                        </tbody>
 	                        <?php } ?>
                 		</table>           
 </div>
+
+<form action="action_position.php" method="post">
+	<div class="modal fade" id="modal-id">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">เพิ่มข้อมูลตำแหน่ง</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+									<div>				
+										<table align="center">
+												<tr>
+													<td>ตำแหน่ง : <span class="f_req"></span></td>
+													<td>
+														<input type="text" name="po_name" id="po_name" value="" class="form-control" required="">
+														<input type="hidden" name="insert" id="" value="1" class="form-control">	
+													</td>
+												</tr>
+										</table>					
+									</div><br>
+								</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-success">บันทึก</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

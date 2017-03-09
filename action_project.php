@@ -6,21 +6,21 @@ include('include/connect.php');
 
 if($_POST['insert']==1){
 	$data = array(
-	"po_name"=>$_POST["po_name"],
+	"pro_name"=>$_POST["pro_name"],
 );
-insert("tb_position",$data);
- header('refresh : 0.1; header.php?menu=pos');
+insert("tb_project",$data);
+ header('refresh : 0.1; header.php?menu=project');
 
 }else if($_POST['update']==1){
 	$data = array(
-	"po_name"=>$_POST["po_name"],
+	"pro_name"=>$_POST["pro_name"],
 );
-update("tb_position",$data,"po_id = '".$_POST["id"]."' ");
-    header('refresh : 0.1; header.php?menu=pos');
+update("tb_project",$data,"pro_id = '".$_POST["id"]."' ");
+    header('refresh : 0.1; header.php?menu=project');
 
 }else if($_GET['del']){
-	delete('tb_position','po_id="'.$_GET['del'].'" ');
-	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='header.php?menu=pos';</script>";
+	delete('tb_project','pro_id="'.$_GET['del'].'" ');
+	echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='header.php?menu=project';</script>";
 }
  ?>
 <!DOCTYPE html>
@@ -31,10 +31,10 @@ update("tb_position",$data,"po_id = '".$_POST["id"]."' ");
 </head>
 <body>
 <?php if($_GET['up']==1){?>
-<form action="action_position.php" method="post" name="form1">
+<form action="action_project.php" method="post" name="form1">
 							<div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						        <h4 class="modal-title" id="myModalLabel">แก้ไขข้อมูลตำแหน่ง</h4>
+						        <h4 class="modal-title" id="myModalLabel">แก้ไขข้อมูลโครงการ</h4>
 						      </div>
 						    <div class="modal-body">
 							    
@@ -42,12 +42,12 @@ update("tb_position",$data,"po_id = '".$_POST["id"]."' ");
 										<div>				
 											<table align="center">
 													<tr>
-														<td>ตำแหน่ง : <span class="f_req"></span></td>
+														<td>ชื่อโครงการ : <span class="f_req"></span></td>
 														<td>
-														<?php $query = mysql_query("SELECT * FROM tb_position WHERE po_id = '".$_GET['idup']."'");
-															$res_po = mysql_fetch_array($query);
+														<?php $query = mysql_query("SELECT * FROM tb_project WHERE pro_id = '".$_GET['idup']."'");
+															$res_pro = mysql_fetch_array($query);
 														 ?>
-															<input type="text" name="po_name" id="po_name" value="<?php echo $res_po['po_name']; ?>" class="form-control" required="">
+															<input type="text" name="pro_name" id="pro_name" value="<?php echo $res_pro['pro_name']; ?>" class="form-control" required="">
 															<input type="hidden" name="update" id="" value="1" class="form-control">	
 															<input type="hidden" name="id" id="" value="<?php echo $_GET['idup'];?>" class="form-control">	
 														</td>
