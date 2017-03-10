@@ -34,15 +34,16 @@ if($_GET['up']==1){
 				  </td>
 				  <td width="60%" valign="top" align="left"> *ปีหนึ่งไม่เกิน 30 วันทำงาน  </td>
   </tr>
-					<tr>
+  <tr>
 						<td align="right" valign="top">
 							<label class="control-label">ลากิจ</label>
 						</td>
 						<td align="left" valign="top">
 							<input type="text" class="form-control round-form"><br>
 					  </td>
-					  <td valign="top" align="left">* ตั้งแต่ 1 ปี ขึ้นไป แต่ไม่ถึง 3 ปี ลาได้ 6 วัน<br>ตั้งแต่ 3 ปี ขึ้นไป แต่ไม่ถึง 5 ปี ลาได้ 7 วัน<br>ตั้งแต่ 5 ปี ขึ้นไป  ลาได้ 8 วัน</td>
+					  <td valign="top" align="left">* *ปีหนึ่งไม่เกิน 6 วันทำงาน</td>
   </tr>
+					
 					<tr>
 						<td align="right" valign="top" >
 							<label class=" control-label">ลาคลอด</label>
@@ -105,6 +106,15 @@ if($_GET['up']==1){
 							<input type="text" class="form-control round-form" ><br>
 					  </td>
 					  <td valign="top" align="left">* คิดจากจำนวนวันลากิจ</td>
+  </tr>
+  <tr>
+						<td align="right" valign="top">
+							<label class="control-label">ลาหยุดพักผ่อนประจำปี</label>
+						</td>
+						<td align="left" valign="top">
+							<input type="text" class="form-control round-form"><br>
+					  </td>
+					  <td valign="top" align="left">* ตั้งแต่ 1 ปี ขึ้นไป แต่ไม่ถึง 3 ปี ลาได้ 6 วัน<br>ตั้งแต่ 3 ปี ขึ้นไป แต่ไม่ถึง 5 ปี ลาได้ 7 วัน<br>ตั้งแต่ 5 ปี ขึ้นไป  ลาได้ 8 วัน</td>
   </tr>
 </table>
                               
