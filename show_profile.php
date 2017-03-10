@@ -104,12 +104,12 @@ session_start();
  						<tr>
 	 						<td>PassWord ใหม่ :</td> 
 	 						<td>	
-	 							<input type="text" name="pass_word" id="" value="" class="form-control">
+	 							<input type="text" name="pass_word" id="" value="" class="form-control" required="">
 	 						</td>
 	 						<td>&nbsp;&nbsp;</td>
 	 						<td>ยืนยัน Password :</td>
 	 						<td>
-	 							<input type="text" name="re_password" id="" value="" class="form-control">
+	 							<input type="text" name="re_password" id="" value="" class="form-control" required="">
 	 						</td>
  						</tr>
  					</table>

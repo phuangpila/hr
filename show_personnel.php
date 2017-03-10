@@ -12,7 +12,7 @@ session_start();
 }
 </style>
  <div class="panel panel-default" >
-                <div class="panel-heading" >ตารางข้อมูลโครงการ</div>
+                <div class="panel-heading" >ตารางข้อมูลพนักงาน</div>
                 <div class="panel-body">
 							<a class="btn btn-success" data-toggle="modal" href='#modal-id'> เพิ่มข้อมูล</a>
 						</div><br>			
@@ -25,7 +25,6 @@ session_start();
 	                            <th>Username</th>
 	                            <th>ตำแหน่ง</th>
 	                            <th>แผนก</th>
-	                            <th>โครงการที่รับผิดชอบ</th>
 	                            <th>อายุงาน(ปี)</th>
 	                            <th>เพศ</th>
 	                            <th width="5%">จำนวนวันลา</th>
@@ -44,9 +43,7 @@ session_start();
 	                        		$query_dep = mysql_query("SELECT dep_name FROM tb_department WHERE dep_id = '".$res['id_department']."'");
 	                        		$res_dep = mysql_fetch_array($query_dep);
 
-	                        		$query_pro = mysql_query("SELECT pro_name FROM tb_project WHERE pro_id = '".$res['id_project']."'");
-	                        		$res_pro = mysql_fetch_array($query_pro);
-	                        	
+	                        
 	                        	
 	                         ?>
 	                         <tr>
@@ -56,8 +53,7 @@ session_start();
 								<td><?php echo $res['user_name']; ?></td>
 								<td><?php echo $res_po['po_name']; ?></td>
 								<td><?php echo $res_dep['dep_name']; ?></td>
-								<td><?php echo $res_pro['pro_name']; ?></td>
-								<td><?php echo $res['work_year']; ?></td>
+								<td><!-- <?php echo $res['work_year']; ?> --></td>
 								<td><?php echo $res['sex']; ?></td>	
 								<td style="text-align:center">
 									<a href="action_personnel.php?detail=1&id_detail=<?php echo $res['id_user']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['id_user']; ?>" class="btn btn-info  btn-xs" ><i class="glyphicon glyphicon-folder-open"></i></a>
