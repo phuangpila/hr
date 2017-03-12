@@ -14,7 +14,12 @@ session_start();
  <div class="panel panel-default" >
                 <div class="panel-heading" >ตารางข้อมูลพนักงาน</div>
                 <div class="panel-body">
-							<a class="btn btn-success" data-toggle="modal" href='#modal-id'> เพิ่มข้อมูล</a>
+							<a href="action_personnel.php?insert=1"   data-toggle="modal"  data-target="#myModalin" class="btn btn-success  btn-sm" >เพิ่มข้อมูล</a>
+								<div class="modal fade" id="myModalin" tabindex="-1" role="dialog" aria-labelledby="myModalLabelin" aria-hidden="true">
+							 		 <div class="modal-dialog">
+							    		<div class="modal-content"></div>
+							 		 </div>
+								</div>
 						</div><br>			
                   		<table class="table-bordered table-striped table-condensed" width="100%">                    
 	                    	<thead>
@@ -25,7 +30,11 @@ session_start();
 	                            <th>Username</th>
 	                            <th>ตำแหน่ง</th>
 	                            <th>แผนก</th>
+<<<<<<< HEAD
 	                            <th>อายุงาน(ปี)</th>
+=======
+	                            <th>วันที่เริ่มงาน</th>
+>>>>>>> origin/master
 	                            <th>เพศ</th>
 	                            <th width="5%">จำนวนวันลา</th>
 	                            <th width="10%">Action</th>
@@ -53,7 +62,11 @@ session_start();
 								<td><?php echo $res['user_name']; ?></td>
 								<td><?php echo $res_po['po_name']; ?></td>
 								<td><?php echo $res_dep['dep_name']; ?></td>
+<<<<<<< HEAD
 								<td><!-- <?php echo $res['work_year']; ?> --></td>
+=======
+								<td><?php echo $res['start_work']; ?></td>
+>>>>>>> origin/master
 								<td><?php echo $res['sex']; ?></td>	
 								<td style="text-align:center">
 									<a href="action_personnel.php?detail=1&id_detail=<?php echo $res['id_user']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['id_user']; ?>" class="btn btn-info  btn-xs" ><i class="glyphicon glyphicon-folder-open"></i></a>
