@@ -92,6 +92,12 @@ error_reporting(0);
                           <span>จัดการโครงการ</span>
                       </a>
                   </li>
+                   <li class="sub-menu">
+              <a <?php if($_GET['menu']=='user_pro'){ echo 'class="active"'; } ?> href="header.php?menu=user_pro" >
+                          <i class="fa fa-briefcase"></i>
+                          <span>จัดการพนักงานสังกัดโครงการ</span>
+                      </a>
+                  </li>
                   <li class="sub-menu">
                       <a <?php if($_GET['menu']=='type_leave'){ echo 'class="active"'; } ?> href="header.php?menu=type_leave" >
                           <i class="fa fa-edit"></i>
@@ -137,6 +143,8 @@ if($_GET['menu']=='pos'){
   include("show_type_leave.php");
 }else if($_GET['menu']=='approve'){
   include("show_approve.php");
+}else if($_GET['menu']=='user_pro'){
+  include("show_user_project.php");
 }
 ?>
   </div> 

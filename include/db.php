@@ -94,6 +94,18 @@ else { die("SQL Error: ".$sql."".mysql_error()); return false; }
 
 }
 
+function Sex($str){
+  $s='';
+  if($str==1){
+    $s='ชาย';
+  }else if($str==2){
+    $s='หญิง';
+  }else{
+    $s='ไม่ระบุ';
+  }
+  return $s;
+}
+
 function DateThai($strDate)
   {
     $strYear = date("Y",strtotime($strDate))+543;
