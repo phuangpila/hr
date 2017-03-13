@@ -95,7 +95,7 @@ error_reporting(0);
                    <li class="sub-menu">
               <a <?php if($_GET['menu']=='user_pro'){ echo 'class="active"'; } ?> href="header.php?menu=user_pro" >
                           <i class="fa fa-briefcase"></i>
-                          <span>จัดการพนักงานสังกัดโครงการ</span>
+                          <span>จัดการโครงการที่ดูแล</span>
                       </a>
                   </li>
                   <li class="sub-menu">

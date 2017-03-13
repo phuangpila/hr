@@ -1,7 +1,7 @@
 <?php
 include('include/db.php');
 include('include/connect.php');
-
+error_reporting(0);
 if($_GET['in']==1){
 	
 	$pass_word="1234";
@@ -32,8 +32,8 @@ if($_POST['update_lea']==1){
 	"lea_sterile"=>$_POST["lea_sterile"],
 	"lea_ordain"=>$_POST["lea_ordain"],
 	"lea_other"=>$_POST["lea_other"],
-	"lea_morning"=>$_POST["lea_morning"],
-	"lea_afternoon"=>$_POST["lea_afternoon"],
+/*	"lea_morning"=>$_POST["lea_morning"],
+	"lea_afternoon"=>$_POST["lea_afternoon"],*/
 	"lea_relax"=>$_POST["lea_sick"],
 );
 
@@ -177,14 +177,21 @@ function textUnlock() {
 <?php
 	$sql_show_lea=mysql_query("SELECT * FROM tb_user WHERE id_user='".$_GET['id_detail']."' ");
 	$res=mysql_fetch_array($sql_show_lea);
+
+$sql_date=mysql_query("SELECT
+start_work
+    , TIMESTAMPDIFF( YEAR, start_work, now() ) as s_year
+    , TIMESTAMPDIFF( MONTH, start_work, now() ) % 12 as s_month
+    , FLOOR( TIMESTAMPDIFF( DAY, start_work, now() ) % 30.4375 ) as s_day FROM tb_user WHERE id_user='".$res['id_user']."'");
+$res_date=mysql_fetch_array($sql_date);
 ?>
 <form action="action_personnel.php" method="post">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title" id="myModalLabel">รายละเอียดจำนวนวันลา (MM)</h4>
+    <h4 class="modal-title" id="myModalLabel">รายละเอียดจำนวนวันลา (<?php echo $res['name']." ".$res['shot_name'] ?>)</h4>
   </div>
   <div class="modal-body">
-    <div class="alert alert-success">อายุงาน 1 ปี 10 เดือน 11 วัน</div>
+    <div class="alert alert-success">อายุงาน <?php echo $res_date['s_year'] ?> ปี <?php echo $res_date['s_month'] ?> เดือน <?php echo $res_date['s_day'] ?> วัน</div>
     <table border='0'  width="100%">
       <tr>
         <td>&nbsp;</td>
