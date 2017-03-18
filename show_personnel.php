@@ -71,7 +71,7 @@ session_start();
               <div class="modal-content"></div>
             </div>
           </div>
-          <button class="btn btn-danger btn-xs" onclick="confirmDelete('action_personnel.php?del=<?php echo $res_de['dep_id']; ?>')"><i class="fa fa-trash-o "></i></button></td>
+          <button class="btn btn-danger btn-xs" onclick="confirmDelete('action_personnel.php?del=<?php echo $res['id_user']; ?>')"><i class="fa fa-trash-o "></i></button></td>
       </tr>
       <?php } ?>
     </tbody>
