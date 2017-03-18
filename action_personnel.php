@@ -3,10 +3,14 @@ include('include/db.php');
 include('include/connect.php');
 error_reporting(0);
 if($_GET['in']==1){
-	
+	$st_hr;
 	$pass_word="1234";
 	$user_name=$_POST['username'];
 		$login_check = hash('sha1', $pass_word.$user_name);
+
+    if($_POST['dep']=='1'){
+        $st_hr='Y';
+    }
 $data = array(
 	"id_number"=>$_POST['id_number'],
 	"name"=>$_POST['name'],
@@ -17,6 +21,8 @@ $data = array(
 	"id_department"=>$_POST['dep'],
 	"sex"=>$_POST['sex'],
 	"start_work"=>$_POST['start_work'],
+  "status_boss"=>$_POST['status_boss'],
+  "status_hr"=>$st_hr,
 );
 insert("tb_user",$data);
  header('refresh : 0.1; header.php?menu=per');	
@@ -121,6 +127,16 @@ if($_GET['insert']==1){
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
+       <tr>
+        <td align="right">สถานะหัวหน้าแผนก : </td>
+        <td>
+        <input type="radio" name="status_boss" value="N" checked> ไม่เป็นหัวหน้า
+  <input type="radio" name="status_boss" value="Y"> เป็นหัวหน้า</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
       <tr>
         <td align="right">เพศ :</td>
         <td><select name="sex" id="sex" class="form-control">
@@ -195,23 +211,27 @@ $res_date=mysql_fetch_array($sql_date);
     <table border='0'  width="100%">
       <tr>
         <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        <td>จำนวนที่ลา</td>
+        <td>จำนวนที่เหลือ</td>
         <td align="right"><a class="btn btn-warning btn-xs" onclick="textUnlock()"><i class="fa fa-pencil"></i></a></td>
       </tr>
       <tr>
         <td width="25%" align="right" ><label class=" control-label">ลาป่วย : </label></td>
+        <td width="15%"><input type="text" class="form-control round-form" name="show_lea_1" id="show_lea_1" disabled="true" value=""></td>
         <td width="15%" align="left"><input type="text" class="form-control round-form" name="lea_sick" id="lea_sick" disabled="true" value="<?php echo $res['lea_sick'];?>">
           <input type="hidden" name="update_lea" id="" value="1" class="form-control">
           <input type="hidden" name="id" id="" value="<?php echo $_GET['id_detail'];?>" class="form-control"></td>
-        <td width="60%" align="left"> * ปีหนึ่งไม่เกิน 30 วันทำงาน </td>
+        <td width="45%" align="left"> * ปีหนึ่งไม่เกิน 30 วันทำงาน </td>
       </tr>
       <tr>
+        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right"><label class="control-label">ลากิจ : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_2" id="show_lea_2" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_work" id="lea_work" disabled="true" value="<?php echo $res['lea_work'];?>"></td>
         <td align="left"> * ปีหนึ่งไม่เกิน 6 วันทำงาน</td>
       </tr>
@@ -219,9 +239,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาคลอด : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_3" id="show_lea_3" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_birth" id="lea_birth" disabled="true" value="<?php echo $res['lea_birth'];?>"></td>
         <td align="left"> * ลาได้ 90 วัน</td>
       </tr>
@@ -229,9 +251,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาเพื่อรับราชการทหาร : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_4" id="show_lea_4" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_soldier" id="lea_soldier" disabled="true" value="<?php echo $res['lea_soldier'];?>"></td>
         <td align="left"> * ลาได้ตามหมายเรียกตัว</td>
       </tr>
@@ -239,9 +263,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาเพื่อทำหมัน : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_5" id="show_lea_5" disabled="true" value=""></td>
         <td align="left" ><input type="text" class="form-control round-form" name="lea_sterile" id="lea_sterile" disabled="true" value="<?php echo $res['lea_sterile'];?>"></td>
         <td align="left"> * ตามระยะเวลาที่แพทย์ออกใบรับรอง</td>
       </tr>
@@ -249,9 +275,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาเพื่ออุปสมบท : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_6" id="show_lea_6" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_ordain" id="lea_ordain" disabled="true" value="<?php echo $res['lea_ordain'];?>"></td>
         <td align="left"> * ลาได้ไม่เกิน 30 วัน </td>
       </tr>
@@ -259,9 +287,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาอื่นๆ : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_7" id="show_lea_7" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_other" id="lea_other" disabled="true" value="<?php echo $res['lea_other'];?>"></td>
         <td align="left"></td>
       </tr>
@@ -269,9 +299,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right"><label class="control-label">ลาหยุดพักผ่อนประจำปี : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_8" id="show_lea_8" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_relax" id="lea_relax" disabled="true" value="<?php echo $res['lea_relax'];?>"></td>
         <td align="left"> * ตั้งแต่ 1 ปี ขึ้นไป แต่ไม่ถึง 3 ปี ลาได้ 6 วัน<br>
           ตั้งแต่ 3 ปี ขึ้นไป แต่ไม่ถึง 5 ปี ลาได้ 7 วัน<br>
@@ -281,9 +313,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" ><label class=" control-label">ลาเช้า : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_9" id="show_lea_9" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_morning" id="lea_morning" disabled="true" value="<?php echo $res['lea_morning'];?>"></td>
         <td align="left"> * คิดจากจำนวนวันลากิจ</td>
       </tr>
@@ -291,9 +325,11 @@ $res_date=mysql_fetch_array($sql_date);
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
       </tr>
       <tr>
         <td align="right" style="vertical-align: text-top;"><label class=" control-label">ลาบ่าย : </label></td>
+        <td><input type="text" class="form-control round-form" name="show_lea_10" id="show_lea_10" disabled="true" value=""></td>
         <td align="left"><input type="text" class="form-control round-form" name="lea_afternoon" id="lea_afternoon" disabled="true" value="<?php echo $res['lea_afternoon'];?>"></td>
         <td align="left"> * คิดจากจำนวนวันลากิจ</td>
       </tr>
