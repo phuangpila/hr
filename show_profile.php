@@ -38,7 +38,7 @@ session_start();
  						<td>ชื่อ :</td> 
  						<td><input type="text" name="" id="" value="<?php echo $res_my['name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
- 						<td>ชื่อย่อ :</td>
+ 						<td  style="text-align: center">ชื่อย่อ :</td>
  						<td><input type="text" name="" id="" value="<?php echo $res_my['shot_name']; ?>" class="form-control" disabled=""></td>
  					</tr>
  					<tr>
@@ -70,7 +70,7 @@ session_start();
  						<td>โครงการ :</td>
  						<td><input type="text" name="" id="" value="<?php echo $res_pro['pro_name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
- 						<td>แผนก :</td>
+ 						<td style="text-align: center">แผนก :</td>
  						<td><input type="text" name="" id="" value="<?php echo $res_de['dep_name']; ?>" class="form-control" disabled=""></td>
  						 <td>&nbsp;&nbsp;</td>
  						
@@ -83,8 +83,8 @@ session_start();
  						<td>ตำแหน่ง :</td>
  						<td><input type="text" name="" id="" value="<?php echo $res_po['po_name']; ?>" class="form-control" disabled=""></td>
  						<td>&nbsp;&nbsp;</td>
- 						<td>อายุงาน :</td>
- 						<td><input type="text" name="" id="" value="<?php echo $res_my['sex']; ?>" class="form-control" disabled=""></td>
+ 						<!-- <td>อายุงาน :</td>
+ 						<td><input type="text" name="" id="" value="<?php echo $res_my['sex']; ?>" class="form-control" disabled=""></td> -->
  					</tr>
  				</thead>
  			</table>
@@ -104,7 +104,7 @@ session_start();
  						<tr>
 	 						<td>PassWord ใหม่ :</td> 
 	 						<td>	
-	 							<input type="text" name="pass_word" id="" value="" class="form-control" required="">
+	 							<input type="text" name="pass_word" id="" value="" class="form-control" required=""	>
 	 						</td>
 	 						<td>&nbsp;&nbsp;</td>
 	 						<td>ยืนยัน Password :</td>
