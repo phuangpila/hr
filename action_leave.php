@@ -84,6 +84,7 @@ if($_GET['insert']=='1'){
 								<td>หัวหน้าแผนก : </td>
 		 						<td>
 		 							<select name="boss_dep" class="form-control">
+		 							<option value="0">เลือก</option>
 		 							<?php
 		 								while($res=mysql_fetch_array($sql_boss_dep)){
 		 							?>
@@ -105,6 +106,7 @@ if($_GET['insert']=='1'){
 								<td>หัวหน้าโครงการ : </td>
 		 						<td>
 		 							<select name="boss_pro" class="form-control">
+		 							<option value="0">เลือก</option>
 		 							<?php
 		 								while($res_pro=mysql_fetch_array($sql_boss_pro)){
 		 							?>
