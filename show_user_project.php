@@ -22,7 +22,7 @@ session_start();
 	                            <th>ลำดับที่</th>
 	                            <th>ชื่อ</th>
 								<th>โครงการ</th>
-								<th>ตำแหน่ง</th>
+								<th>ตำแหน่งในโครงการ</th>
 								<th>Action</th>
 	                          </tr>
 	                        </thead>
@@ -114,8 +114,8 @@ session_start();
 												<tr>
 													<td style="text-align: center;" width="150">สถานะในโครงการ : <span class="f_req"></span></td>
 													<td>
-														<input type="radio" name="header" id="header" value="Y">เป็นหัวหน้า
-														<input type="radio" name="header" id="header" value="N" checked="checked">ไม่เป็นหัวหน้า
+														<input type="radio" name="header" id="header" value="Y">หัวหน้าโครงการ
+														<input type="radio" name="header" id="header" value="N" checked="checked">ผู้ร่วมโครงการ
 													</td>
 												</tr>
 										</table>					
