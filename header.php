@@ -27,6 +27,17 @@ error_reporting(0);
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+  <!--  
+  <link rel="stylesheet" type="text/css" href="assets/dataTable/jquery-ui.css">
+   <link rel="stylesheet" type="text/css" href="assets/dataTable/dataTables.jqueryui.css">
+   <script type="text/javascript" language="javascript" src="assets/dataTable/jquery-1.10.2.min.js"></script>
+   <script type="text/javascript" language="javascript" src="assets/dataTable/jquery.dataTables.js"></script>
+   <script type="text/javascript" language="javascript" src="assets/dataTable/dataTables.jqueryui.js"></script> -->
+<link rel="stylesheet" type="text/css" href="assets/dataTables/data_table.css">
+<link rel="stylesheet" type="text/css" href="assets/dataTables/data_table2.css"> 
+<script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js.js"></script>
+<script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js2.js"></script>
+<script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js3.js"></script>
   </head>
 
   <body>
@@ -155,10 +166,14 @@ if($_GET['menu']=='pos'){
 <?php
       include "footer.php";
 ?>
+
+    
+   
+
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-1.8.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+   <!--  <script src="assets/js/jquery.js"></script>
+   <script src="assets/js/jquery-1.8.3.min.js"></script>
+    --><script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>

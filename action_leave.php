@@ -1,10 +1,26 @@
 <?php 
+session_start();
 error_reporting(0);
 include('include/db.php');
 include('include/connect.php');
 
- ?>
+if($_GET['in']=='1'){
+	$date=date("Y-m-d");
+	$data = array(
+"id_user"=>$_SESSION["id"],
+"lea_unit"=>$_POST["lea_unit"],
+"lea_request"=>$date,
+"lea_type"=>$_POST["lea_type"],
+"lea_comment"=>$_POST["lea_comment"],
+"lea_start"=>$_POST["lea_start"],
+"lea_end"=>$_POST["lea_end"],
+);
+insert("tb_leave",$data);
+header('refresh : 0.1; header.php?menu=leave');
+}
 
+if($_GET['insert']=='1'){
+ ?>
 <form name="form1" action="action_leave.php?in=1" method="POST">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -15,7 +31,7 @@ include('include/connect.php');
 							<tr>
 								<td>ประเภทการลา : </td>
 								<td colspan="4">
-									<select name="type_leave" id="type_leave" class="form-control">
+									<select name="lea_type" id="lea_type" class="form-control">
 									<option value="">เลือก</option>
 									<?php 
 									echo $s;
@@ -43,10 +59,10 @@ include('include/connect.php');
 							</tr>
 							<tr>
 								<td>เริ่มวันที่ : </td>
-		 						<td><input type="date" name="" id="" value="" class="form-control"></td>
+		 						<td><input type="date" name="lea_start" id="lea_start" value="" class="form-control"></td>
 		 						<td>&nbsp;&nbsp;</td>
 		 						<td>ถึง : </td>
-		 						<td><input type="date" name="" id="" value="" class="form-control"></td>
+		 						<td><input type="date" name="lea_end" id="lea_end" value="" class="form-control"></td>
 							</tr>
 							<tr>
 								<td>&nbsp;&nbsp;</td>
@@ -54,7 +70,7 @@ include('include/connect.php');
 							</tr>
 							<tr>
 								<td>หมายเหตุ : </td>
-		 						<td colspan="4"><textarea name="" id="" class="form-control"></textarea></td>
+		 						<td colspan="4"><textarea name="lea_comment" id="lea_comment" class="form-control"></textarea></td>
 							</tr>
 							<tr>
 								<td>&nbsp;&nbsp;</td>
@@ -106,3 +122,6 @@ include('include/connect.php');
     <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
   </div>
 </form>
+<?php
+}
+?>
