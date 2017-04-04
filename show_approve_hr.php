@@ -27,6 +27,7 @@ if($_GET['chk']=='1'){
         <th>ประเภทการลา</th>
         <th>ลาวันที่จาก-ถึง</th>
         <th>รายละเอียด</th>
+        <th>สถานะ</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -55,9 +56,10 @@ if($_GET['chk']=='1'){
                     </div>
                 </div>
             </td>
+            <td></td>
             <td>
-                <a href="show_approve_hr.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['hr_approve']==1 ){ echo "disabled"; } ?> >อนุมัติ</a>
-                <a href="action_approve_hr.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['hr_approve']==1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>
+                <a href="show_approve_hr.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['hr_approve']>=1 ){ echo "disabled"; } ?> >อนุมัติ</a>
+                <a href="action_approve_hr.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['hr_approve']>=1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>
                 <div class="modal fade" id="myModalST<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelST" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content"></div>

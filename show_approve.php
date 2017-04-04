@@ -28,6 +28,7 @@ if($_GET['chk']=='1'){
         <th>ประเภทการลา</th>
         <th>ลาวันที่จาก-ถึง</th>
         <th>รายละเอียด</th>
+        <th>สถานะ</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -36,7 +37,6 @@ if($_GET['chk']=='1'){
     $i=1;
         $sql=mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."' ");
         while($res=mysql_fetch_array($sql)){
-            if($res['ma_approve']==0 ){
     ?>
     <tr>
         <td><?php echo $i; ?></td>
@@ -49,6 +49,7 @@ if($_GET['chk']=='1'){
             $res_t=mysql_fetch_array($sql_t);
            echo $res_t['type_name']; ?></td>
         <td><?php echo $res['lea_start']." - ".$res['lea_end']; ?></td>
+
         <td>
             <a href="action_approve.php?detail=1&id_detail=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" >รายละเอียด</a>
             <div class="modal fade" id="myModal<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -57,12 +58,10 @@ if($_GET['chk']=='1'){
                 </div>
             </div>
         </td>
+        <td></td>
         <td>
-
-
-
-            <a href="show_approve.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['ma_approve']==1 ){ echo "disabled"; } ?> >อนุมัติ</a>
-            <a href="action_approve.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['ma_approve']==1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>
+            <a href="show_approve.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['ma_approve']>=1 ){ echo "disabled"; } ?> >อนุมัติ</a>
+            <a href="action_approve.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['ma_approve']>=1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>
             <div class="modal fade" id="myModalST<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelST" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content"></div>
@@ -70,7 +69,7 @@ if($_GET['chk']=='1'){
             </div>
         </td>
     </tr>
-    <?php $i++; } } ?>
+    <?php $i++;  } ?>
     </tbody>
 </table>
 

@@ -81,23 +81,24 @@ if ($_GET['detail'] == '1') {
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
     </div>
-    </form>
     <?php
 }
 if ($_GET['st'] == '1') {
     ?>
+    <form action="action_approve_pro.php?c=1" method="post">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabelST">เหตุผลที่ไม่อนุมัติ</h4>
     </div>
     <div class="modal-body">
-        <form action="action_approve.php?c=1" method="post">
+
             <textarea name="comment" class="form-control"></textarea>
             <input type="hidden" name="id_lea" value="<?php echo $_GET['id_lea']; ?>">
         </form>
 
     </div>
     <div class="modal-footer">
+        <button type="submit" class="btn btn-success">บันทึก</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
     </div>
     </form>
