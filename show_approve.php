@@ -1,92 +1,101 @@
 <?php
 include('include/db.php');
 include('include/connect.php');
+
+if($_GET['chk']=='1'){
+
+     $date = date("Y-m-d");
+    $sql_c=mysql_query("SELECT * FROM tb_leave WHERE lea_id='".$_GET['id_lea']."' ");
+    $res_c=mysql_fetch_array($sql_c);
+
+        $data = array(
+            "ma_approve"=>"1",
+            "date_approve_ma"=>$date,
+        );
+
+        update("tb_leave",$data,"lea_id = '".$_GET['id_lea']."' ");
+    header('refresh : 0.1; header.php?menu=approve_dep');
+}
+
 ?>
 
-    <style type="text/css">
-    	.ui-widget-header {
-	border: 1px solid rgba(255, 255, 255, 0.16);
-	background: #ffffff;
-	color: #ffffff;
-	font-weight: bold;
-}
-input,select{
-	   display: block;
-    width: 100%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-label{
-	text-align: left;
-}
 
-    </style>
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <thead>
+    <tr>
+        <th>ลำดับ</th>
+        <th>ชื่อผู้ลา</th>
+        <th>ประเภทการลา</th>
+        <th>ลาวันที่จาก-ถึง</th>
+        <th>รายละเอียด</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    $i=1;
+        $sql=mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."' ");
+        while($res=mysql_fetch_array($sql)){
+            if($res['ma_approve']==0 ){
+    ?>
+    <tr>
+        <td><?php echo $i; ?></td>
+        <td><?php
+            $sql_u=mysql_query("SELECT * FROM tb_user WHERE id_user='".$res['id_user']."' ");
+            $res_u=mysql_fetch_array($sql_u);
+            echo $res_u['name']." ".$res_u['shot_name']; ?></td>
+        <td><?php
+            $sql_t=mysql_query("SELECT * FROM tb_type_leave WHERE type_id='".$res['lea_type']."' ");
+            $res_t=mysql_fetch_array($sql_t);
+           echo $res_t['type_name']; ?></td>
+        <td><?php echo $res['lea_start']." - ".$res['lea_end']; ?></td>
+        <td>
+            <a href="action_approve.php?detail=1&id_detail=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" >รายละเอียด</a>
+            <div class="modal fade" id="myModal<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+            </div>
+        </td>
+        <td>
 
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                        </tr>
-                                     
-                                      
-                                    </tbody>
-                                </table>
-                         
-           
- 
-    <script type="text/javascript" charset="utf-8">
-     $(document).ready(function() {
-$('#dataTables-example').dataTable( {
-                    "oLanguage": {
-                     "sProcessing": "กำลังดำเนินการ...",
-              "sLengthMenu": "แสดง_MENU_ แถว",
-              "sZeroRecords": "ไม่พบข้อมูล",
-              "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
-              "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
-              "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
-              "sInfoPostFix": "",
-              "sSearch": "ค้นหา:",
-              "sUrl": "",
-              "oPaginate": {
-                            "sFirst": "เิริ่มต้น",
-                            "sPrevious": "ก่อนหน้า",
-                            "sNext": "ถัดไป",
-                            "sLast": "สุดท้าย"
-              }
-          }
 
-} );
-} );
+
+            <a href="show_approve.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['ma_approve']==1 ){ echo "disabled"; } ?> >อนุมัติ</a>
+            <a href="action_approve.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['ma_approve']==1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>
+            <div class="modal fade" id="myModalST<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelST" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <?php $i++; } } ?>
+    </tbody>
+</table>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable({
+            "oLanguage": {
+                "sProcessing": "กำลังดำเนินการ...",
+                "sLengthMenu": "แสดง_MENU_ แถว",
+                "sZeroRecords": "ไม่พบข้อมูล",
+                "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+                "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+                "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+                "sInfoPostFix": "",
+                "sSearch": "ค้นหา:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "เิริ่มต้น",
+                    "sPrevious": "ก่อนหน้า",
+                    "sNext": "ถัดไป",
+                    "sLast": "สุดท้าย"
+                }
+            }
+
+        });
+    });
 </script>
