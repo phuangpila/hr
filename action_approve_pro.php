@@ -74,7 +74,7 @@ if ($_GET['detail'] == '1') {
             </tr>
             <tr>
                 <td style="text-align: right">ไฟล์ : </td>
-                <td><?php echo $res['lea_file']; ?></td>
+                <td><a href="<?php echo $res['lea_file']; ?>">ดาวน์โหลด(เอกสารประกอบการลา)</a></td>
             </tr>
         </table>
     </div>

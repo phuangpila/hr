@@ -71,7 +71,7 @@ include('include/connect.php');
         <td style="text-align:center"></td>
         <td style="text-align:center">
           
-          <a href="action_leave.php?doc=1&id_doc=<?php echo $res['id_user']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['id_user']; ?>" class="btn btn-primary  btn-xs" ><i class="fa fa-file-word-o"></i></a>
+          <a href="action_leave.php?doc=1&id_doc=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['id_user']; ?>" class="btn btn-primary  btn-xs" ><i class="fa fa-file-word-o"></i></a>
           <div class="modal fade" id="myModalD<?php echo $res['id_user']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelD" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content"></div>
