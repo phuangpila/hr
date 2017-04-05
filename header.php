@@ -1,6 +1,9 @@
 <?php
 session_start();
+include('include/connect.php');
 error_reporting(0);
+ $sql_u = mysql_query("SELECT * FROM tb_user WHERE id_user='".$_SESSION["id"]."' ");
+$res_u = mysql_fetch_array($sql_u);
 
 ?>
 <!DOCTYPE html>
@@ -79,80 +82,94 @@ error_reporting(0);
                         <span>ข้อมูลส่วนตัว</span>
                     </a>
                 </li>
+                <?php
 
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'per') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=per">
-                        <i class="fa fa-users"></i>
-                        <span>จัดการข้อมูลพนักงาน</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'pos') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=pos">
-                        <i class="fa fa-database"></i>
-                        <span>จัดการข้อมูลตำแหน่ง</span>
-                    </a>
+                if ($res_u['status_hr'] == 'Y') {
+                    ?>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'per') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=per">
+                            <i class="fa fa-users"></i>
+                            <span>จัดการข้อมูลพนักงาน</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'pos') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=pos">
+                            <i class="fa fa-database"></i>
+                            <span>จัดการข้อมูลตำแหน่ง</span>
+                        </a>
 
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'dep') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=dep">
-                        <i class="fa fa-bar-chart-o"></i>
-                        <span>จักการข้อมูลแผนก</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'project') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=project">
-                        <i class="fa fa-sitemap"></i>
-                        <span>จัดการโครงการ</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'user_pro') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=user_pro">
-                        <i class="fa fa-briefcase"></i>
-                        <span>จัดการโครงการที่ดูแล</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'type_leave') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=type_leave">
-                        <i class="fa fa-edit"></i>
-                        <span>ประเภทการลา</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'approve_dep') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=approve_dep">
-                        <i class="fa fa-book"></i>
-                        <span>อนุมัติการลาแผนก <span class="badge bg-important bg-theme">4</span></span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'approve_pro') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=approve_pro">
-                        <i class="fa fa-book"></i>
-                        <span>อนุมัติการลาโครงการ <span class="badge bg-important bg-theme">4</span></span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a <?php if ($_GET['menu'] == 'approve_hr') {
-                        echo 'class="active"';
-                    } ?> href="header.php?menu=approve_hr">
-                        <i class="fa fa-book"></i>
-                        <span>อนุมัติการลา HR <span class="badge bg-important bg-theme">4</span></span>
-                    </a>
-                </li>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'dep') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=dep">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>จักการข้อมูลแผนก</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'project') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=project">
+                            <i class="fa fa-sitemap"></i>
+                            <span>จัดการโครงการ</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'user_pro') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=user_pro">
+                            <i class="fa fa-briefcase"></i>
+                            <span>จัดการโครงการที่ดูแล</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'type_leave') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=type_leave">
+                            <i class="fa fa-edit"></i>
+                            <span>ประเภทการลา</span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                if ($res_u['status_boss'] == 'Y') {
+                    ?>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'approve_dep') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=approve_dep">
+                            <i class="fa fa-book"></i>
+                            <span>อนุมัติการลาแผนก <span class="badge bg-important bg-theme">4</span></span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'approve_pro') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=approve_pro">
+                            <i class="fa fa-book"></i>
+                            <span>อนุมัติการลาโครงการ <span class="badge bg-important bg-theme">4</span></span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                if ($res_u['status_boss'] == 'Y' && $res_u['status_hr'] == 'Y') {
+                    ?>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'approve_hr') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=approve_hr">
+                            <i class="fa fa-book"></i>
+                            <span>อนุมัติการลา HR <span class="badge bg-important bg-theme">4</span></span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
                 <li class="sub-menu">
                     <a <?php if ($_GET['menu'] == 'leave') {
                         echo 'class="active"';
@@ -190,9 +207,9 @@ error_reporting(0);
                         include("show_approve.php");
                     } else if ($_GET['menu'] == 'user_pro') {
                         include("show_user_project.php");
-                    }else if ($_GET['menu'] == 'approve_hr') {
+                    } else if ($_GET['menu'] == 'approve_hr') {
                         include("show_approve_hr.php");
-                    }else if ($_GET['menu'] == 'approve_pro') {
+                    } else if ($_GET['menu'] == 'approve_pro') {
                         include("show_approve_pro.php");
                     }
                     ?>

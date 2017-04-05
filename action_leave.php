@@ -112,7 +112,7 @@ if ($_GET['insert'] == '1') {
                             <?php
                             while ($res_pro = mysql_fetch_array($sql_boss_pro)) {
                                 ?>
-                                <option value="<?php echo $res['id_user']; ?>"><?php echo $res_pro['name'] . " (" . $res_pro['shot_name'] . ")"; ?></option>
+                                <option value="<?php echo $res_pro['id_user']; ?>"><?php echo $res_pro['name'] . " (" . $res_pro['shot_name'] . ")"; ?></option>
                                 <?php
                             }
                             ?>

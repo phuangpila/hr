@@ -94,7 +94,6 @@ if ($_GET['st'] == '1') {
 
             <textarea name="comment" class="form-control"></textarea>
             <input type="hidden" name="id_lea" value="<?php echo $_GET['id_lea']; ?>">
-        </form>
 
     </div>
     <div class="modal-footer">

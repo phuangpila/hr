@@ -96,8 +96,6 @@ if ($_GET['st'] == '1') {
 
             <textarea name="comment" class="form-control"></textarea>
             <input type="hidden" name="id_lea" value="<?php echo $_GET['id_lea']; ?>">
-
-
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-success">บันทึก</button>

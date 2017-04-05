@@ -311,7 +311,7 @@
       </table>
   </div>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-success">บัทึก</button>
+    <button type="submit" class="btn btn-success">บันทึก</button>
     <button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
   </div>
   </form>
