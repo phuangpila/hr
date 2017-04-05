@@ -45,6 +45,7 @@ include('include/connect.php');
         <th style="text-align:center">หัวหน้าโครงการอนุมัติ</th>
         <th style="text-align:center">ฝ่ายบุคคลอนุมัติ</th>
         <th style="text-align:center">แนบเอกสารการลา</th>
+          <th style="text-align:center">รายละเอียดเอกสารการลา</th>
         <th width="10%" style="text-align:center">Action</th>
       </tr>
     </thead>
@@ -79,6 +80,10 @@ include('include/connect.php');
           </div>
 
         </td>
+         <td> <?php if ($res['lea_file'] != '') { ?>
+                    <a href="<?php echo $res['lea_file']; ?>">ดาวน์โหลด(เอกสารประกอบการลา)</a>
+                    <?php }elseif ($res['lea_file'] == '') {
+                    } ?></td>
         <td style="text-align:center"></td>
       </tr>
       <?php 
