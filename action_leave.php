@@ -21,8 +21,24 @@ if ($_GET['in'] == '1') {
     header('refresh : 0.1; header.php?menu=leave');
 }
 
-if ($_GET['insert'] == '1') {
-    ?>
+if ($_GET['indoc'] == '1') {
+      $gg=$_FILES['pic']['name'];
+      $image=$_FILES['pic']['tmp_name'];
+      $image2=date("Ymd")."_".rand(1,99999);
+      $dest="doc_file/$gg";  
+    
+$data = array(
+"lea_file" =>$dest,
+);
+update("tb_leave",$data,"lea_id = '".$_POST["id_doc"]."' ");
+move_uploaded_file($image,$dest);
+ header("refresh : 0.1; header.php?menu=leave");
+ }
+ ?>
+
+
+
+ <?php if($_GET['insert']=='1'){ ?>
     <form name="form1" action="action_leave.php?in=1" method="POST">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -126,6 +142,27 @@ if ($_GET['insert'] == '1') {
             <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
         </div>
     </form>
-    <?php
-}
-?>
+<?php } else if ($_GET['doc'] == '1') {?>
+<form name="form1" action="action_leave.php?indoc=1" method="POST"  enctype="multipart/form-data">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabelin">แบนเอกสารการลา</h4>
+  </div>
+  <div class="modal-body">
+   <table align="center" border="0">
+        <tr>
+            <td>แนบเอกสารการลา :</td>
+            <td>
+            <input type="file" name="pic" id="pic">
+            <input type="hidden" name="id_doc" id="id_doc" value="<?php echo $_GET['id_doc'];?>">
+            </td>
+        </tr>
+
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success">บันทึก</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+  </div>
+</form>
+<?php } ?>

@@ -5,6 +5,14 @@ error_reporting(0);
  $sql_u = mysql_query("SELECT * FROM tb_user WHERE id_user='".$_SESSION["id"]."' ");
 $res_u = mysql_fetch_array($sql_u);
 
+    $query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."'");
+    $res_dep = mysql_num_rows($query_dep);
+
+    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE ma_approve=1 AND pro_approve=1");
+    $res_hr = mysql_num_rows($query_hr);
+
+    $query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='".$_SESSION["id"]."' ");
+    $res_pro = mysql_num_rows($query_pro);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +152,7 @@ $res_u = mysql_fetch_array($sql_u);
                             echo 'class="active"';
                         } ?> href="header.php?menu=approve_dep">
                             <i class="fa fa-book"></i>
-                            <span>อนุมัติการลาแผนก <span class="badge bg-important bg-theme">4</span></span>
+                            <span>อนุมัติการลาแผนก <span class="badge bg-important bg-theme"><?php echo $res_dep; ?></span></span>
                         </a>
                     </li>
                     <li class="sub-menu">
@@ -152,7 +160,7 @@ $res_u = mysql_fetch_array($sql_u);
                             echo 'class="active"';
                         } ?> href="header.php?menu=approve_pro">
                             <i class="fa fa-book"></i>
-                            <span>อนุมัติการลาโครงการ <span class="badge bg-important bg-theme">4</span></span>
+                            <span>อนุมัติการลาโครงการ <span class="badge bg-important bg-theme"><?php echo $res_pro; ?></span></span>
                         </a>
                     </li>
                     <?php
@@ -164,7 +172,7 @@ $res_u = mysql_fetch_array($sql_u);
                             echo 'class="active"';
                         } ?> href="header.php?menu=approve_hr">
                             <i class="fa fa-book"></i>
-                            <span>อนุมัติการลา HR <span class="badge bg-important bg-theme">4</span></span>
+                            <span>อนุมัติการลา HR <span class="badge bg-important bg-theme"><?php echo $res_hr; ?></span></span>
                         </a>
                     </li>
                     <?php
