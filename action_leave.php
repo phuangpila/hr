@@ -25,7 +25,7 @@ if ($_GET['indoc'] == '1') {
       $gg=$_FILES['pic']['name'];
       $image=$_FILES['pic']['tmp_name'];
       $image2=date("Ymd")."_".rand(1,99999);
-      $dest="doc_file/$gg";  
+      $dest="doc_file/".$image2."_".$gg;
     
 $data = array(
 "lea_file" =>$dest,
