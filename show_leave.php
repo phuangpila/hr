@@ -67,9 +67,33 @@ include('include/connect.php');
         <td style="text-align:center"><?php echo $res['lea_request']; ?></td>
         <td style="text-align:center"><?php echo $res['lea_start']." - ".$res['lea_end']; ?></td>
         <td style="text-align:center"><?php echo $res['lea_comment']; ?></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
+        <td style="text-align:center">
+          <?php if ($res['lea_head_ma'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลา</span></p>
+          <?php }elseif ($res['lea_head_ma'] =='2') { ?>
+           <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
+            <?php }elseif ($res['lea_head_ma'] =='0') { ?>
+           <p><span class="label label-warning">รอดำเนินการ</span></p>
+           <?php } ?>
+        </td>
+        <td style="text-align:center">
+                    <?php if ($res['lea_head_pro'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลา</span></p>
+          <?php }elseif ($res['lea_head_pro'] =='2') { ?>
+           <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
+            <?php }elseif ($res['lea_head_pro'] =='0') { ?>
+           <p><span class="label label-warning">รอดำเนินการ</span></p>
+           <?php } ?>
+        </td>
+        <td style="text-align:center">
+                     <?php if ($res['lea_head_hr'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลา</span></p>
+          <?php }elseif ($res['lea_head_hr'] =='2') { ?>
+           <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
+            <?php }elseif ($res['lea_head_hr'] =='0') { ?>
+           <p><span class="label label-warning">รอดำเนินการ</span></p>
+           <?php } ?>
+        </td>
         <td style="text-align:center">
           
           <a href="action_leave.php?doc=1&id_doc=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['lea_id']; ?>" class="btn btn-primary  btn-xs" ><i class="fa fa-file-word-o"></i></a>
