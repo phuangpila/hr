@@ -29,8 +29,11 @@ session_start();
  				$res_de = mysql_fetch_array($query_de);
 
 
-	            $query_pro = mysql_query("SELECT pro_name FROM tb_project WHERE pro_id = '".$res_my['id_project']."'");
-	            $res_pro = mysql_fetch_array($query_pro);
+            $query_u_pro = mysql_query("SELECT * FROM tb_user_project WHERE id_user = '".$_SESSION["id"]."'");
+            $res_u_pro = mysql_fetch_array($query_u_pro);
+
+            $query_pro = mysql_query("SELECT pro_name FROM tb_project WHERE pro_id = '".$res_u_pro['id_pro']."'");
+            $res_pro = mysql_fetch_array($query_pro);
  			 ?>
  			<table align="center">
  				<thead>

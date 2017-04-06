@@ -40,7 +40,7 @@ session_start();
     <tbody>
       <?php 
 	                        	$i=1;
-	                        	$query = mysql_query("SELECT * FROM tb_user");
+	                        	$query = mysql_query("SELECT * FROM tb_user WHERE id_user !=1");
 	                        	while ($res = mysql_fetch_array($query)) {
 	                        		$query_po = mysql_query("SELECT po_name FROM tb_position WHERE po_id = '".$res['id_position']."'");
 	                        		$res_po = mysql_fetch_array($query_po);

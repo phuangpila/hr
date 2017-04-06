@@ -100,7 +100,7 @@ move_uploaded_file($image,$dest);
                 </tr>
                 <tr>
                     <?php
-                    $sql_boss_dep = mysql_query("SELECT * FROM tb_user WHERE status_boss='Y' ");
+                    $sql_boss_dep = mysql_query("SELECT * FROM tb_user WHERE status_boss='Y' AND id_user!=1 ");
 
                     ?>
                     <td>หัวหน้าแผนก :</td>
