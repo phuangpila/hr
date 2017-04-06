@@ -56,6 +56,14 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js.js"></script>
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js2.js"></script>
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js3.js"></script>
+    <style>
+        .header{
+            background-color: #2FB8FC;
+        }
+        ul.top-menu > li > .logout{
+            background-color: palevioletred;
+        }
+    </style>
 </head>
 
 <body>

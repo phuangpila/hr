@@ -68,29 +68,29 @@ include('include/connect.php');
         <td style="text-align:center"><?php echo $res['lea_start']." - ".$res['lea_end']; ?></td>
         <td style="text-align:center"><?php echo $res['lea_comment']; ?></td>
         <td style="text-align:center">
-          <?php if ($res['lea_head_ma'] =='1') { ?>
-          <p><span class="label label-success">อนุมัติการลา</span></p>
-          <?php }elseif ($res['lea_head_ma'] =='2') { ?>
+          <?php if ($res['ma_approve'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลาแล้ว</span></p>
+          <?php }else if ($res['ma_approve'] =='2') { ?>
            <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
-            <?php }elseif ($res['lea_head_ma'] =='0') { ?>
+            <?php }else if ($res['ma_approve'] =='0') { ?>
            <p><span class="label label-warning">รอดำเนินการ</span></p>
            <?php } ?>
         </td>
         <td style="text-align:center">
-                    <?php if ($res['lea_head_pro'] =='1') { ?>
-          <p><span class="label label-success">อนุมัติการลา</span></p>
-          <?php }elseif ($res['lea_head_pro'] =='2') { ?>
+                    <?php if ($res['pro_approve'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลาแล้ว</span></p>
+          <?php }else if ($res['pro_approve'] =='2') { ?>
            <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
-            <?php }elseif ($res['lea_head_pro'] =='0') { ?>
+            <?php }else if ($res['pro_approve'] =='0') { ?>
            <p><span class="label label-warning">รอดำเนินการ</span></p>
            <?php } ?>
         </td>
         <td style="text-align:center">
-                     <?php if ($res['lea_head_hr'] =='1') { ?>
-          <p><span class="label label-success">อนุมัติการลา</span></p>
-          <?php }elseif ($res['lea_head_hr'] =='2') { ?>
+                     <?php if ($res['hr_approve'] =='1') { ?>
+          <p><span class="label label-success">อนุมัติการลาแล้ว</span></p>
+          <?php }else if ($res['hr_approve'] =='2') { ?>
            <p><span class="label label-danger">ไม่อนุมัติการลา</span></p>
-            <?php }elseif ($res['lea_head_hr'] =='0') { ?>
+            <?php }else if ($res['hr_approve'] =='0') { ?>
            <p><span class="label label-warning">รอดำเนินการ</span></p>
            <?php } ?>
         </td>

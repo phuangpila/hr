@@ -9,9 +9,16 @@ session_start();
  <head>
  	<meta charset="UTF-8">
  	<title></title>
+     <style type="text/css">
+         .panel-default > .panel-heading {
+             color: #FFFFFF;
+             background-color: #424A5D;
+             border-color: #FFFFFF;
+         }
+     </style>
  </head>
  <body>
- 	<div class="panel panel-success">
+ 	<div class="panel panel-default">
  		<div class="panel-heading">
  			<h3 class="panel-title">ข้อมูลส่วนตัว</h3>
  		</div>

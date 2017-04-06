@@ -11,6 +11,7 @@ session_start();
 	border-color: #FFFFFF;
 }
 </style>
+
 <div class="panel panel-default" >
   <div class="panel-heading" >ตารางข้อมูลพนักงาน</div>
   <div class="panel-body"> <a href="action_personnel.php?insert=1"   data-toggle="modal"  data-target="#myModalin" class="btn btn-success  btn-sm" >เพิ่มข้อมูล</a>

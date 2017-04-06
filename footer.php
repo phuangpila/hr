@@ -1,6 +1,6 @@
    <style>
     .site-footer {
-        background-color: #FFD777;
+        background-color: #2FB8FC;
     }
 </style>
    <footer class="site-footer">

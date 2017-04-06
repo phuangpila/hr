@@ -55,6 +55,14 @@ error_reporting(0);
             white-space: nowrap;
         }
     </style>
+    <style>
+        .header{
+            background-color: #2FB8FC;
+        }
+        ul.top-menu > li > .logout{
+            background-color: palevioletred;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,7 +70,7 @@ error_reporting(0);
     <!--header start-->
     <header class="header black-bg">
         <!--logo start-->
-        <a href="header.php" class="logo"><b>Bizpotentail</b></a>
+        <a href="#" class="logo"><b>Bizpotentail</b></a>
         <!--logo end-->
 
 
