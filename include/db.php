@@ -1,6 +1,6 @@
 <?php 
 
- include('include/connect.php');
+ //include('include/connect.php');
 
 //ฟังก์ชั่น insert การใช้งาน
 

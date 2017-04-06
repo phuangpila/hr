@@ -98,7 +98,6 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                     </a>
                 </li>
                 <?php
-
                 if ($res_u['status_hr'] == 'Y') {
                     ?>
                     <li class="sub-menu">
@@ -198,6 +197,20 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                         <span>ขอลา</span>
                     </a>
                 </li>
+                <?php
+                if ($res_u['status_hr'] == 'Y') {
+                    ?>
+                    <li class="sub-menu">
+                        <a <?php if ($_GET['menu'] == 'report_lea') {
+                            echo 'class="active"';
+                        } ?> href="header.php?menu=report_lea">
+                            <i class="fa fa-calendar"></i>
+                            <span>รายงานการลา</span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
             </ul>
             <!-- sidebar menu end-->
         </div>
@@ -231,6 +244,8 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                         include("show_approve_hr.php");
                     } else if ($_GET['menu'] == 'approve_pro') {
                         include("show_approve_pro.php");
+                    }else if ($_GET['menu'] == 'report_lea') {
+                        include("search_report_lea.php");
                     }
                     ?>
                 </div>

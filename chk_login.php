@@ -1,5 +1,6 @@
 <?php 
 	include('include/db.php');
+	include('include/connect.php');
 	error_reporting(0);
 	session_start();
 $user_name=stripslashes(htmlspecialchars(trim($_POST['user_name']), ENT_QUOTES));
