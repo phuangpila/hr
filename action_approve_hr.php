@@ -86,7 +86,7 @@ if ($_GET['detail'] == '1') {
         </table>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="creload();">ปิด</button>
     </div>
     <?php
 }
@@ -122,6 +122,12 @@ if ($_GET['st'] == '1') {
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-success">บันทึก</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="creload();">ปิด</button>
     </div>
 <?php } ?>
+<script>
+  function creload(){
+    window.location.reload('header.php?menu=approve_hr');
+  }
+
+</script>

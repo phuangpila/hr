@@ -8,7 +8,7 @@ $res_u = mysql_fetch_array($sql_u);
     $query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."' AND ma_approve = '0'");
     $res_dep = mysql_num_rows($query_dep);
 
-    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE lea_head_hr='".$_SESSION["id"]."' AND hr_approve='0' ");
+    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE lea_head_hr='".$_SESSION["id"]."' AND ma_approve = '1'  AND pro_approve = '1' ");
     $res_hr = mysql_num_rows($query_hr);
 
     $query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='".$_SESSION["id"]."'  AND pro_approve='0'  ");
