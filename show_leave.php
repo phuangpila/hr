@@ -72,8 +72,8 @@ include('include/connect.php');
         <td style="text-align:center"></td>
         <td style="text-align:center">
           
-          <a href="action_leave.php?doc=1&id_doc=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['id_user']; ?>" class="btn btn-primary  btn-xs" ><i class="fa fa-file-word-o"></i></a>
-          <div class="modal fade" id="myModalD<?php echo $res['id_user']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelD" aria-hidden="true">
+          <a href="action_leave.php?doc=1&id_doc=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalD<?php echo $res['lea_id']; ?>" class="btn btn-primary  btn-xs" ><i class="fa fa-file-word-o"></i></a>
+          <div class="modal fade" id="myModalD<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabelD" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content"></div>
             </div>
@@ -84,7 +84,9 @@ include('include/connect.php');
                     <a href="<?php echo $res['lea_file']; ?>">ดาวน์โหลด(เอกสารประกอบการลา)</a>
                     <?php }elseif ($res['lea_file'] == '') {
                     } ?></td>
-        <td style="text-align:center"></td>
+        <td style="text-align:center">
+            <button class="btn btn-danger btn-xs" onclick="confirmDelete('action_leave.php?del=<?php echo $res['lea_id']; ?>')"><i class="fa fa-trash-o "></i></button>
+        </td>
       </tr>
       <?php 
   		$i++;	

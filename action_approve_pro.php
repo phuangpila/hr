@@ -11,7 +11,7 @@ if ($_GET['c'] == '1') {
 
         $data = array(
             "lea_comment_ma"=>$_POST['comment'],
-            "ma_approve"=>"2",
+            "pro_approve"=>"2",
             "date_approve_ma"=>$date,
         );
 
@@ -105,6 +105,21 @@ if ($_GET['st'] == '1') {
         <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
     </div>
     </form>
-    <?php
-}
-?>
+   <?php
+}elseif ($_GET['app_detail'] == '1') { ?>
+<?php 
+    $query_detail = mysql_query("select * from tb_leave where lea_id = '".$_GET['id_app_detail']."'");
+    $res_de = mysql_fetch_array($query_detail);
+ ?>
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabelST">รายละเอียด</h4>
+    </div>
+    <div class="modal-body">
+        เหตุผลที่ไม่อนุมัติ : <?php echo $res_de['lea_comment_pro']; ?>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success">บันทึก</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+    </div>
+<?php } ?>

@@ -34,6 +34,10 @@ update("tb_leave",$data,"lea_id = '".$_POST["id_doc"]."' ");
 move_uploaded_file($image,$dest);
  header("refresh : 0.1; header.php?menu=leave");
  }
+  if($_GET['del']){
+    delete('tb_leave','lea_id="'.$_GET['del'].'" ');
+    echo "<script type='text/javascript'>alert('ลบข้อมูลเรียบร้อยแล้ว');window.location.href ='header.php?menu=leave';</script>";
+}
  ?>
 
 

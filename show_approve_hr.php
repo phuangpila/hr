@@ -56,7 +56,22 @@ if($_GET['chk']=='1'){
                     </div>
                 </div>
             </td>
-            <td></td>
+            <td>
+                 <?php 
+                if ($res['hr_approve'] == '0') {
+                    echo "รอดำเนินการ";
+                }else if ($res['hr_approve'] == '1') {
+                    echo "อนุมัติแล้ว";
+                }else if ($res['hr_approve'] == '2') {
+             ?>
+              <a href="action_approve_hr.php?app_detail=1&id_app_detail=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModal<?php echo $res['lea_id']; ?>" class="btn btn-danger      btn-xs" >ไม่อนุมัติ</a>
+            <div class="modal fade" id="myModal<?php echo $res['lea_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                </div>
+            </div>
+             <?php } ?>
+            </td>
             <td>
                 <a href="show_approve_hr.php?chk=1&id_lea=<?php echo $res['lea_id']; ?>" class="btn btn-success btn-xs" <?php if($res['hr_approve']>=1 ){ echo "disabled"; } ?> >อนุมัติ</a>
                 <a href="action_approve_hr.php?st=1&id_lea=<?php echo $res['lea_id']; ?>"   data-toggle="modal"  data-target="#myModalST<?php echo $res['lea_id']; ?>" class="btn btn-info  btn-xs" <?php if($res['hr_approve']>=1 ){ echo "disabled"; } ?>>ไม่อนุมัติ</a>

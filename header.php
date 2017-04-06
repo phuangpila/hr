@@ -5,13 +5,13 @@ error_reporting(0);
  $sql_u = mysql_query("SELECT * FROM tb_user WHERE id_user='".$_SESSION["id"]."' ");
 $res_u = mysql_fetch_array($sql_u);
 
-    $query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."'");
+    $query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."' AND ma_approve = '0'");
     $res_dep = mysql_num_rows($query_dep);
 
-    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE ma_approve=1 AND pro_approve=1");
+    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE lea_head_hr='".$_SESSION["id"]."' AND hr_approve='0' ");
     $res_hr = mysql_num_rows($query_hr);
 
-    $query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='".$_SESSION["id"]."' ");
+    $query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='".$_SESSION["id"]."'  AND pro_approve='0'  ");
     $res_pro = mysql_num_rows($query_pro);
 ?>
 <!DOCTYPE html>
