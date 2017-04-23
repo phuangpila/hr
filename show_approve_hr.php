@@ -17,7 +17,13 @@ if($_GET['chk']=='1'){
     header('refresh : 0.1; header.php?menu=approve_hr');
 }
 ?>
-
+<aside class="col-lg-12 mt">
+                      <section class="panel">
+                          <div class="panel-body">
+                              <div id="calendar" class="has-toolbar"></div>
+                          </div>
+                      </section>
+                  </aside>
 
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>

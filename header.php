@@ -2,23 +2,23 @@
 session_start();
 include('include/connect.php');
 error_reporting(0);
- $sql_u = mysql_query("SELECT * FROM tb_user WHERE id_user='".$_SESSION["id"]."' ");
+$sql_u = mysql_query("SELECT * FROM tb_user WHERE id_user='" . $_SESSION["id"] . "' ");
 $res_u = mysql_fetch_array($sql_u);
 
-    $query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='".$_SESSION["id"]."' AND ma_approve=0");
-    $res_dep = mysql_num_rows($query_dep);
+$query_dep = mysql_query("SELECT * FROM tb_leave WHERE lea_head_ma='" . $_SESSION["id"] . "' AND ma_approve=0");
+$res_dep = mysql_num_rows($query_dep);
 
 
-    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE ma_approve=1 AND pro_approve=1 AND hr_approve=0");
+$query_hr = mysql_query("SELECT * FROM tb_leave WHERE ma_approve=1 AND pro_approve=1 AND hr_approve=0");
 
-    $query_hr = mysql_query("SELECT * FROM tb_leave WHERE lea_head_hr='".$_SESSION["id"]."' AND ma_approve = '1'  AND pro_approve = '1' ");
+$query_hr = mysql_query("SELECT * FROM tb_leave WHERE lea_head_hr='" . $_SESSION["id"] . "' AND ma_approve = '1'  AND pro_approve = '1' ");
 
-    $res_hr = mysql_num_rows($query_hr);
+$res_hr = mysql_num_rows($query_hr);
 
-    $query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='".$_SESSION["id"]."' AND pro_approve=0");
-    $res_pro = mysql_num_rows($query_pro);
+$query_pro = mysql_query("SELECT * FROM tb_leave WHERE lea_head_pro='" . $_SESSION["id"] . "' AND pro_approve=0");
+$res_pro = mysql_num_rows($query_pro);
 
-$query_u_pro = mysql_query("SELECT * FROM tb_user_project WHERE id_user='".$_SESSION["id"]."' ");
+$query_u_pro = mysql_query("SELECT * FROM tb_user_project WHERE id_user='" . $_SESSION["id"] . "' ");
 $res_u_pro = mysql_fetch_array($query_u_pro);
 ?>
 <!DOCTYPE html>
@@ -45,22 +45,20 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-    <!--
-    <link rel="stylesheet" type="text/css" href="assets/dataTable/jquery-ui.css">
-     <link rel="stylesheet" type="text/css" href="assets/dataTable/dataTables.jqueryui.css">
-     <script type="text/javascript" language="javascript" src="assets/dataTable/jquery-1.10.2.min.js"></script>
-     <script type="text/javascript" language="javascript" src="assets/dataTable/jquery.dataTables.js"></script>
-     <script type="text/javascript" language="javascript" src="assets/dataTable/dataTables.jqueryui.js"></script> -->
+  
     <link rel="stylesheet" type="text/css" href="assets/dataTables/data_table.css">
     <link rel="stylesheet" type="text/css" href="assets/dataTables/data_table2.css">
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js.js"></script>
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js2.js"></script>
     <script type="text/javascript" language="javascript" src="assets/dataTables/data_table_js3.js"></script>
+
+ 
     <style>
-        .header{
+        .header {
             background-color: #2FB8FC;
         }
-        ul.top-menu > li > .logout{
+
+        ul.top-menu > li > .logout {
             background-color: palevioletred;
         }
     </style>
@@ -172,14 +170,15 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                     </li>
                     <?php
                 }
-                if ($res_u_pro['header']=='Y') {
+                if ($res_u_pro['header'] == 'Y') {
                     ?>
                     <li class="sub-menu">
                         <a <?php if ($_GET['menu'] == 'approve_pro') {
                             echo 'class="active"';
                         } ?> href="header.php?menu=approve_pro">
                             <i class="fa fa-book"></i>
-                            <span>อนุมัติการลาโครงการ <span class="badge bg-important bg-theme"><?php echo $res_pro; ?></span></span>
+                            <span>อนุมัติการลาโครงการ <span
+                                        class="badge bg-important bg-theme"><?php echo $res_pro; ?></span></span>
                         </a>
                     </li>
                     <?php
@@ -191,7 +190,8 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                             echo 'class="active"';
                         } ?> href="header.php?menu=approve_hr">
                             <i class="fa fa-book"></i>
-                            <span>อนุมัติการลา HR <span class="badge bg-important bg-theme"><?php echo $res_hr; ?></span></span>
+                            <span>อนุมัติการลา HR <span
+                                        class="badge bg-important bg-theme"><?php echo $res_hr; ?></span></span>
                         </a>
                     </li>
                     <?php
@@ -252,7 +252,7 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
                         include("show_approve_hr.php");
                     } else if ($_GET['menu'] == 'approve_pro') {
                         include("show_approve_pro.php");
-                    }else if ($_GET['menu'] == 'report_lea') {
+                    } else if ($_GET['menu'] == 'report_lea') {
                         include("search_report_lea.php");
                     }
                     ?>
@@ -270,22 +270,26 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
     <!--  <script src="assets/js/jquery.js"></script>
     <script src="assets/js/jquery-1.8.3.min.js"></script>
      -->
+  <link href="assets/js/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+
+
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="assets/js/jquery.sparkline.js"></script>
-
-
-    <!--common script for all pages-->
     <script src="assets/js/common-scripts.js"></script>
-
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+<script src="assets/js/sparkline-chart.js"></script>
+    <script src="assets/js/zabuto_calendar.js"></script> 
 
-    <!--script for this page-->
-    <script src="assets/js/sparkline-chart.js"></script>
-    <script src="assets/js/zabuto_calendar.js"></script>
+
+   <!--  <script src="assets/js/jquery.js"></script> -->
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/fullcalendar/fullcalendar.min.js"></script> 
+    <script src="assets/js/calendar-conf-events.js"></script>    
+
     <?php
     if ($_SESSION["chk"] == '1') {
         ?>
@@ -347,6 +351,8 @@ $res_u_pro = mysql_fetch_array($query_u_pro);
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
+
+
 </body>
 
 </html>
