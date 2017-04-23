@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include('include/db.php');
-include('include/connect.php');
+include('include/connect.php'); 
 
 if ($_GET['c'] == '1') {
     $date = date("Y-m-d");
